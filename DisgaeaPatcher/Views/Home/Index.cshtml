@@ -1,0 +1,82 @@
+﻿@using ElectronNET.API
+@model DisgaeaPatcher.Controllers.HomeController
+
+@{
+    ViewBag.Title = "Parcheador Disgaea PC";
+}
+<!doctype html>
+
+<html lang="es">
+<head>
+    <title>Parcheador Disgaea PC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="@Url.Content("~/css/Style.css")" type="text/css" />
+
+    <meta charset="utf-8">
+</head>
+<body>
+<div class="bodyHtml bodyHtmlMain">
+    <div style="display: none">
+        @*<audio autoplay="" loop="" volume="0.3">
+            <source src="@Url.Content("~/audio/background.mp3")" type="audio/mpeg"/>
+            Your browser does not support the audio element.
+        </audio>*@
+        <audio id="audioSelection" volume="0.3">
+            <source src="@Url.Content("~/audio/selection.mp3")" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="audioEnter" volume="0.3">
+            <source src="@Url.Content("~/audio/enter.mp3")" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6" style="text-align: left">
+                <img alt="" src="@Url.Content("~/img/Logo.png")" class="logo"/>
+            </div>
+            <div class="col-6">
+                <img alt="" src="@Url.Content("~/img/LogoTeam.png")" style="height: 20vh; width: 30vw; margin-left: 15vw;"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6" style="margin-left: 10vh; margin-top: 5vh;">
+                <div class="dialogBox">
+                    <p>Instalar</p>
+                    <p id="credits">Información</p>
+                    <p id="exit" >Salir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>window.$ = window.jQuery = require('jquery');</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        const audio = $("#audioSelection")[0];
+        const audioEnter = $("#audioEnter")[0];
+        $(".dialogBox p").mouseenter(function() {
+            audio.play();
+        });
+        $(".dialogBox p").click(function() {
+            audioEnter.play();
+        });
+        $("#exit").click(function() {
+            $("body").addClass('fade-out');
+            setTimeout(() => { window.close(); }, 1000);
+        });
+        $("#credits").click(function () {
+            const url = "@Html.Raw(@Url.Action("OpenInfo", "Home"))";
+            $.ajax({ url: url });
+        });
+
+    });
+
+</script>
+</body>
+</html>

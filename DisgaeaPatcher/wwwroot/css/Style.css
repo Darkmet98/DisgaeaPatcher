@@ -1,0 +1,100 @@
+﻿body {
+    background-color: black;
+}
+.bodyHtml {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #fff;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bodyHtmlMain {
+    background-image: url("../img/background.jpg");
+}
+
+.bodyHtmlCredits {
+    background-image: url("../img/creditsWallpaper.jpg");
+}
+
+.dialogBox {
+    background-color: #e2e2e2;
+    color: #2a2212;
+    width: 28vw;
+    height: 40vh;
+    font-size: 6vh;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 6vh;
+    border: 1vh #525252 solid;
+    cursor: default;
+}
+.dialogBox > p:hover:before {
+    content: url("../img/selection.png");
+}
+
+.logo {
+    height: 28vh;
+    width: 33vw;
+    margin-top: 8vh;
+}
+
+.textBorder {
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.creditsBox {
+    background-color: #cfc0a9;
+    border-style: groove;
+    font-size: 1.3vw;
+    border-color: #8e6952;
+    overflow: hidden;
+    margin-bottom: 1vh;
+}
+.imgCreditsBox {
+    height: 20vh;
+}
+
+.noPadding {
+    padding-left: 0;
+}
+
+.creditsTitle {
+    background-color: #594231;
+    color: #c9c4c0;
+    border-style: groove;
+    font-size: 3vh;
+    border-color: #8e6952;
+}
+
+.creditsTitle > span {
+    margin-left: 2vw;
+}
+
+.fade-out {
+    -webkit-animation: fade-out 1s ease-out both;
+    animation: fade-out 1s ease-out both
+}
+
+@-webkit-keyframes fade-out {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
