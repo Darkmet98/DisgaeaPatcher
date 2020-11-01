@@ -1,4 +1,5 @@
-﻿using DisgaeaPatcher.Core;
+﻿using System;
+using DisgaeaPatcher.Core;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +22,9 @@ namespace DisgaeaPatcher.Controllers
                 $"http://localhost:{BridgeSettings.WebPort}/Credits");
         }
 
-        public void OpenGame()
+        public void OpenGame(string type)
         {
-            Core.OpenGame(1);
+            Core.OpenGame(Convert.ToInt32(type));
         }
 
         public ActionResult CheckGame()
@@ -36,6 +37,18 @@ namespace DisgaeaPatcher.Controllers
         {
             var result = Core.PatchGame();
             return Json(new { check = result.Item1, msg = result.Item2 });
+        }
+
+        public ActionResult CheckInternet()
+        {
+            return Json(new { check = Core.Internet });
+        }
+
+        public ActionResult CheckUpdate()
+        {
+            var update = Core.CheckUpdate();
+            
+            return Json(new { check = update, msg = Core.OnlineVersion.Changelog });
         }
 
         public ActionResult CheckPiratedGame()

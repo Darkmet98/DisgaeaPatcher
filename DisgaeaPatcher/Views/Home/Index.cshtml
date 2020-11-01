@@ -58,7 +58,7 @@
         </div>
     </div>
 
-<!-- Modal Progress -->
+    <!-- Modal Progress -->
     <div class="modal fade" id="progressWindow" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modalBox">
@@ -134,16 +134,51 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" onclick="play()">Jugar</button>
+                    <button type="button" class="btn btn-primary" onclick="playGame()">Jugar</button>
 
                 </div>
             </div>
         </div>
     </div>
+    
+<!-- Modal update -->
+<div class="modal fade" id="updateWindow" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content modalBox">
+            <div class="modal-header modalTitle">
+                <h5 class="modal-title">¡Se ha encontrado una actualización!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-3" style="padding-top: 3vh;">
+                            <img alt="" class="imgCreditsBox text-center align-middle" style="margin-left: 1vw;" src="@Url.Content("~/img/prinny00.gif")" />
+                        </div>
+                        <div class="col-9" style="padding-top: 3vh;">
+                            <div id="updateText"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="update()">Actualizar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     $(document).ready(function() {
         const audio = $("#audioSelection")[0];
@@ -162,31 +197,143 @@
             const url = "@Html.Raw(@Url.Action("OpenInfo", "Home"))";
             $.ajax({ url: url });
         });
-        $("#play").click(function() {
-            $("#pirateWindow").modal('show');
+        $("#play").click(function (evt) {
+            $("#progressTitle").text("Comprobando actualizaciones...");
+            $("#progressText").text("Se están comprobando las actualizaciones...");
+            $("#progressWindow").modal('show');
+            setTimeout(() => {
+                check(evt);
+            }, 1000);
+            
         });
         $("#install").click(function() {
-            $("#progressTitle").text("Comprobando archivos.");
+            $("#progressTitle").text("Comprobando archivos...");
             $("#progressText").text("Se están comprobando los archivos...");
             $("#progressWindow").modal('show');
             setTimeout(() => {
-                    patch();
-                },
-                1000);
+                patch();
+            }, 1000);
 
         });
 
     });
 
-    function play() {
-        const url = "@Html.Raw(@Url.Action("OpenGame", "Home"))";
+    var english = false;
+
+    function check(evt) {
+        english = evt.ctrlKey;
+        let pirate = false;
+
+        $.ajax({ url: "@Html.Raw(@Url.Action("CheckGame", "Home"))" }).done(function(data) {
+
+            if (!data.check) {
+                $("#progressWindow").modal('hide');
+                $("#infoTitle").text("Error verificando archivos.");
+                $("#infoText").text(data.msg);
+                $("#progressWindow").modal('hide');
+                $("#infoWindow").modal('show');
+                return;
+            }
+
+            if (data.msg || data.msg.length !== 0) {
+                pirate = true;
+            }
+
+            $.ajax({ url: "@Html.Raw(@Url.Action("CheckInternet", "Home"))" }).done(function(data) {
+
+                if (!data.check && pirate) {
+                    $("#progressWindow").modal('hide');
+                    $("#pirateWindow").modal('show');
+                    return;
+                }
+
+                if (!data.check) {
+                    noUpdate();
+                    return;
+                }
+
+                $.ajax({ url: "@Html.Raw(@Url.Action("CheckUpdate", "Home"))" }).done(function(data) {
+
+                    if (!data.check) {
+                        noUpdate(pirate);
+                        return;
+                    } else {
+                        $("#updateText").html(data.msg);
+                        $("#progressWindow").modal('hide');
+                        $("#updateWindow").modal('show');
+                    }
+
+                });
+
+            });
+
+        });
+
+    }
+
+    function playGame() {
+        let url = "";
+        if (english)
+            url = "@Html.Raw(@Url.Action("OpenGame", "Home", new {type = "0"}))";
+        else
+            url = "@Html.Raw(@Url.Action("OpenGame", "Home", new {type = "1"}))";
         $.ajax({ url: url });
         $("body").addClass('fade-out');
         setTimeout(() => { window.close(); }, 1000);
     }
 
+    function noUpdate(pirate) {
+        $("#progressTitle").text("No hay actualizaciones.");
+        $("#progressText").text("No se ha detectado ninguna actualización. Iniciando juego...");
+        setTimeout(() => {
+                if (pirate) {
+                    $("#progressWindow").modal('hide');
+                    $("#pirateWindow").modal('show');
+                    return;
+                }
+                playGame();
+            },
+            2000);
+    }
+
+    function update() {
+        $("#updateWindow").modal('hide');
+        $("#progressTitle").text("Actualizando el parche...");
+        $("#progressText").text("Se está actualizando el parche...");
+        $("#progressWindow").modal('show');
+        $.ajax({ url: "@Html.Raw(@Url.Action("PatchGame", "Home"))" }).done(function(data) {
+
+            if (!data.check) {
+                $("#progressWindow").modal('hide');
+                $("#infoTitle").text("Error aplicando el parche.");
+                $("#infoText").text(data.msg);
+                $("#infoWindow").modal('show');
+                return;
+            }
+
+            $.ajax({ url: "@Html.Raw(@Url.Action("CheckPiratedGame", "Home"))" }).done(function(data) {
+                $("#progressWindow").modal('hide');
+                $("#infoTitle").text("Parche instalado.");
+                $("#infoText").text("Se ha instalado el parche correctamente. Iniciando juego...");
+                $("#infoWindow").modal('show');
+                setTimeout(() => {
+                        if (data) {
+                            $("#progressWindow").modal('hide');
+                            $("#pirateWindow").modal('show');
+                            return;
+                        }
+                        else {
+                            playGame();
+                        }
+                    },
+                    2000);
+            });
+        });
+    }
+
+
     function patch() {
-        $.ajax({ url: "@Html.Raw(@Url.Action("CheckGame", "Home"))" }).done(function (data) {
+        $.ajax({ url: "@Html.Raw(@Url.Action("CheckGame", "Home"))" }).done(function(data) {
 
             if (!data.check) {
                 $("#progressWindow").modal('hide');
@@ -210,6 +357,9 @@
                 }
 
                 $.ajax({ url: "@Html.Raw(@Url.Action("CheckPiratedGame", "Home"))" }).done(function(data) {
+                    $("#install").hide();
+                    $("#play").show();
+
                     if (data) {
                         $("#progressWindow").modal('hide');
                         $("#pirateWindow").modal('show');
@@ -219,12 +369,11 @@
                     $("#infoTitle").text("Parche instalado.");
                     $("#infoText").text("Se ha instalado el parche correctamente.");
                     $("#infoWindow").modal('show');
-                    $("#install").hide();
-                    $("#play").show();
+                    
                 });
             });
         });
     }
-    </script>
+</script>
 </body>
 </html>

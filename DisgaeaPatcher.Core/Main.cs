@@ -20,17 +20,20 @@ namespace DisgaeaPatcher.Core
         public bool Installed { get; set; }
         private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
                                  Path.DirectorySeparatorChar;
+        //private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
+        //                         Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".."
+        //                         + Path.DirectorySeparatorChar;
         private string errMsg = "El juego está dañado, reinstala de nuevo el juego y el parcheador.";
         private string temp;
-        private bool internet;
+        public bool Internet { get; }
         public bool GamePirated;
         private string steamDllMd5 = "1147b3abee03804b62f11080588dc950";
         private Version localVersion;
-        private Version onlineVersion;
+        public Version OnlineVersion { get; set; }
 
         public Main()
         {
-            internet = CheckInternet();
+            Internet = CheckInternet();
             Installed = File.Exists(gameDir + "version.json");
         }
 
@@ -63,7 +66,7 @@ namespace DisgaeaPatcher.Core
 
                 if (Installed)
                 {
-                    if (dllMd5 == steamDllMd5)
+                    if (dllMd5 == steamDllMd5 && !File.Exists($"{gameDir}SmartSteamEmu.dll"))
                         return (true, string.Empty);
 
                     GamePirated = true;
@@ -71,6 +74,10 @@ namespace DisgaeaPatcher.Core
                                   "Es posible que el parche no funcione correctamente. " +
                                   "Hypertraducciones no apoya la piratería, por lo que no podrá ofrecerte soporte.");
                 }
+
+                if (!Internet)
+                    return (false,
+                        "No tienes una conexión a internet. Es necesario tener internet\npara instalar el parche.");
 
                 localVersion = GetVersionJson();
 
@@ -88,7 +95,7 @@ namespace DisgaeaPatcher.Core
                 if (localVersion.Md5[2] != subdataMd5)
                     return (false, $"{errMsg}\nERROR CODE: SUBDATA_MD5_MISMATCH.");
 
-                if (dllMd5 != steamDllMd5)
+                if (dllMd5 != steamDllMd5 || File.Exists($"{gameDir}SmartSteamEmu.dll"))
                 {
                     GamePirated = true;
                     return (true, "ATENCIÓN: Se ha detectado una copia ilegítima de Disgaea PC.\n" +
@@ -105,21 +112,23 @@ namespace DisgaeaPatcher.Core
             }
         }
 
-        public void CheckUpdate()
+        public bool CheckUpdate()
         {
-            if (!internet)
-                return;
+            if (!Internet)
+                return false;
 
-            onlineVersion = GetVersionJson();
+            OnlineVersion = GetVersionJson();
             localVersion = JsonConvert.DeserializeObject<Version>(
-                File.ReadAllText($"{temp}{Path.DirectorySeparatorChar}version.json"));
+                File.ReadAllText($"{gameDir}version.json"));
+
+            return OnlineVersion.Id != localVersion.Id;
         }
 
         public (bool, string) PatchGame()
         {
             try
             {
-                Internet.GetFile(fileDownloadUrl, "DisgaeaPatch.zip", temp);
+                FileManipulation.Internet.GetFile(fileDownloadUrl, "DisgaeaPatch.zip", temp);
                 Directory.CreateDirectory($"{temp}{Path.DirectorySeparatorChar}Update");
                 ZipFile.ExtractToDirectory($"{temp}{Path.DirectorySeparatorChar}DisgaeaPatch.zip", $"{temp}{Path.DirectorySeparatorChar}Update");
                 var result = PatchDisgaeaFiles.Patch(gameDir, $"{temp}{Path.DirectorySeparatorChar}Update");
@@ -127,7 +136,7 @@ namespace DisgaeaPatcher.Core
                 Installed = result.Item1;
                 
                 if (Installed) 
-                    File.Copy($"{temp}{Path.DirectorySeparatorChar}version.json", $"{gameDir}version.json");
+                    File.Copy($"{temp}{Path.DirectorySeparatorChar}version.json", $"{gameDir}version.json", true);
 
                 return result;
             }
@@ -141,9 +150,9 @@ namespace DisgaeaPatcher.Core
         private Version GetVersionJson()
         {
             GenerateTempFolder();
-            if (internet)
+            if (Internet)
             {
-                Internet.GetFile(versionCheckUrl, "version.json", temp);
+                FileManipulation.Internet.GetFile(versionCheckUrl, "version.json", temp);
                 return JsonConvert.DeserializeObject<Version>(
                     File.ReadAllText($"{temp}{Path.DirectorySeparatorChar}version.json"));
             }

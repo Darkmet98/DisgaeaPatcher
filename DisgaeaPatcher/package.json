@@ -1,5 +1,7 @@
 {
   "version": "1.0.0",
+  "electronVersion": "^9.2.0",
+  "description": "Patcher",
   "main": "main.js",
   "private": true,
   "scripts": {

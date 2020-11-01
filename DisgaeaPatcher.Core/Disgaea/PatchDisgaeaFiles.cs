@@ -10,12 +10,20 @@ namespace DisgaeaPatcher.Core.Disgaea
         {
             try
             {
+                if (File.Exists($"{gameDir}DATA.esp"))
+                    File.Delete($"{gameDir}DATA.esp");
                 FileManipulation.Xdelta.Apply(new FileStream($"{gameDir}{Path.DirectorySeparatorChar}DATA.DAT", FileMode.Open),
                     File.ReadAllBytes($"{filesDir}{Path.DirectorySeparatorChar}Files{Path.DirectorySeparatorChar}DATA.xdelta"),
                     $"{gameDir}DATA.esp");
+
+                if (File.Exists($"{gameDir}SUBDATA.esp"))
+                    File.Delete($"{gameDir}SUBDATA.esp");
                 FileManipulation.Xdelta.Apply(new FileStream($"{gameDir}{Path.DirectorySeparatorChar}SUBDATA.DAT", FileMode.Open),
                     File.ReadAllBytes($"{filesDir}{Path.DirectorySeparatorChar}Files{Path.DirectorySeparatorChar}SUBDATA.xdelta"),
                     $"{gameDir}SUBDATA.esp");
+
+                if (File.Exists($"{gameDir}dis1_st_es.exe"))
+                    File.Delete($"{gameDir}dis1_st_es.exe");
                 FileManipulation.Xdelta.Apply(new FileStream($"{gameDir}{Path.DirectorySeparatorChar}dis1_st_en.exe", FileMode.Open),
                     File.ReadAllBytes($"{filesDir}{Path.DirectorySeparatorChar}Files{Path.DirectorySeparatorChar}dis1_st.xdelta"),
                     $"{gameDir}dis1_st_es.exe");
