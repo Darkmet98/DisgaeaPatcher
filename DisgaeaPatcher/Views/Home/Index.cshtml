@@ -48,8 +48,11 @@
             <div class="row">
                 <div class="col-6" style="margin-left: 10vw; margin-top: 5vh;">
                     <div class="dialogBox">
-                        <p id="install" style="display: @(HomeController.Core.Installed ? "none" : "initial");">Instalar</p>
-                        <p id="play" style="display: @(!HomeController.Core.Installed ? "none" : "initial");">Jugar</p>
+                        @if (!HomeController.Core.Installed)
+                        {
+                            <p id="install">Instalar</p>
+                        }
+                        <p id="play" style="display: @(!HomeController.Core.Installed ? "none" : "block");">Jugar</p>
                         <p id="credits">Créditos</p>
                         <p id="exit">Salir</p>
                     </div>

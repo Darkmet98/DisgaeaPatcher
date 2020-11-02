@@ -8,21 +8,27 @@
 <html lang="es">
 <head>
     <title>Parcheador Disgaea PC - Créditos</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="@Url.Content("~/css/bootstrap/bootstrap.min.css")" type="text/css" />
     <link rel="stylesheet" href="@Url.Content("~/css/Style.css")" type="text/css" />
+    <script>
+        let $ = require('jquery');
+        let jQuery = require('jquery');
+        require('popper.js');
+        require('bootstrap');
+    </script>
 
     <meta charset="utf-8">
 </head>
 <body>
 <div class="bodyHtml bodyHtmlCredits">
     <div class="container-fluid">
-        <div class="row" style="padding-top: 5vh;">
-            <div class="col-4">
+        <div class="row" style="padding-top: 2vh;">
+            <div class="col-3">
                 <img alt="" class="imgCreditsBox" src="@Url.Content("~/img/prinny.gif")" />
             </div>
-            <div class="col-4">
-                <div class="creditsBox">
-                    <h1 class="text-center" style="font-size: 2.1vw;">Disgaea PC al castellano - v1.0.0</h1>
+            <div class="col-5">
+                <div class="creditsBox" style="width: 50vw;height: 20vh;">
+                    <h1 class="text-center" style="font-size: 2.1vw;padding-top: 3.5vh;">Disgaea PC al castellano - v1.0.0</h1>
                     <h3 class="text-center" style="font-size: 1.5vw;">Proyecto de traducción fundado, dirigido y supervisado por Óscar73.</h3>
                 </div>
             </div>
@@ -30,8 +36,8 @@
                 <img alt="" class="imgCreditsBox" src="@Url.Content("~/img/prinny.gif")" />
             </div>
         </div>
-        <div class="row" style="padding-top: 5vh;">
-            <div class="col-3">
+        <div class="row" style="padding-top: 3vh;">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                 <div class="creditsTitle">
                     <span>Óscar73</span>
                 </div>
@@ -41,16 +47,16 @@
                             <div class="col-4 noPadding">
                                 <img src="@Url.Content("~/img/Avatares/Óscar73.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div class="col-8">
-                                <p>Traductor y tester.</p>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Traductor y tester</span>
                                 <div>
-                                    <p style="float: left">NV:</p>
-                                    <p style="float: right">737373</p>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">7373</span>
                                     <div style="clear: both;"></div>
                                 </div>
                                 <div>
-                                    <p style="float: left">Twitter:</p>
-                                    <p style="float: right">Óscar73</p>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Óscar73</span>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
@@ -58,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                 <div class="creditsTitle">
                     <span>Darkmet98</span>
                 </div>
@@ -68,16 +74,16 @@
                             <div class="col-4 noPadding">
                                 <img src="@Url.Content("~/img/Avatares/Darkmet.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div class="col-8">
-                                <p>Romhacker (textos y ejecutable).</p>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Romhacker</span>
                                 <div>
-                                    <p style="float: left">NV:</p>
-                                    <p style="float: right">666666</p>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">6666</span>
                                     <div style="clear: both;"></div>
                                 </div>
                                 <div>
-                                    <p style="float: left">Twitter:</p>
-                                    <p style="float: right">Darkmet98</p>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Darkmet98</span>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
@@ -85,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                 <div class="creditsTitle">
                     <span>NakuFox</span>
                 </div>
@@ -95,16 +101,16 @@
                             <div class="col-4 noPadding">
                                 <img src="@Url.Content("~/img/Avatares/NakuFox.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div class="col-8">
-                                <p>Editor gráfico.</p>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Editor gráfico</span>
                                 <div>
-                                    <p style="float: left">NV:</p>
-                                    <p style="float: right">777777</p>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">7777</span>
                                     <div style="clear: both;"></div>
                                 </div>
                                 <div>
-                                    <p style="float: left">Twitter:</p>
-                                    <p style="float: right">Nakufox</p>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Nakufox</span>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
@@ -113,7 +119,7 @@
                 </div>
             </div>
 
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
                 <div class="creditsTitle">
                     <span>Toridenki</span>
                 </div>
@@ -123,16 +129,16 @@
                             <div class="col-4 noPadding">
                                 <img src="@Url.Content("~/img/Avatares/Toridenki.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div class="col-8">
-                                <p>Tester.</p>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Tester</span>
                                 <div>
-                                    <p style="float: left">NV:</p>
-                                    <p style="float: right">1000</p>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">3000</span>
                                     <div style="clear: both;"></div>
                                 </div>
                                 <div>
-                                    <p style="float: left">Twitter:</p>
-                                    <p style="float: right">toridenki</p>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Toridenki</span>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
@@ -140,91 +146,88 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-    <div class="row">
-        <div class="col-3">
-            <div class="creditsTitle">
-                <span>Roli300</span>
-            </div>
-            <div class="creditsBox">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4 noPadding">
-                            <img src="@Url.Content("~/img/Avatares/Roli300.png")" class="imgCreditsBox" alt="" />
-                        </div>
-                        <div class="col-8">
-                            <p>Tester.</p>
-                            <div>
-                                <p style="float: left">NV:</p>
-                                <p style="float: right">1</p>
-                                <div style="clear: both;"></div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                <div class="creditsTitle">
+                    <span>Roli300</span>
+                </div>
+                <div class="creditsBox">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 noPadding">
+                                <img src="@Url.Content("~/img/Avatares/Roli300.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div>
-                                <p style="float: left">Twitter:</p>
-                                <p style="float: right">roli300</p>
-                                <div style="clear: both;"></div>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Tester</span>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">4000</span>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Roli300</span>
+                                    <div style="clear: both;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-3">
-            <div class="creditsTitle">
-                <span>Pleonex</span>
-            </div>
-            <div class="creditsBox">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4 noPadding">
-                            <img src="@Url.Content("~/img/Avatares/Pleonex.png")" class="imgCreditsBox" alt="" />
-                        </div>
-                        <div class="col-8">
-                            <p>Romhacker (ejecutable).</p>
-                            <div>
-                                <p style="float: left">NV:</p>
-                                <p style="float: right">999999</p>
-                                <div style="clear: both;"></div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                <div class="creditsTitle">
+                    <span>Pleonex</span>
+                </div>
+                <div class="creditsBox">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 noPadding">
+                                <img src="@Url.Content("~/img/Avatares/Pleonex.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div>
-                                <p style="float: left">Twitter:</p>
-                                <p style="float: right">pleonex</p>
-                                <div style="clear: both;"></div>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Romhacker</span>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">9999</span>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Pleonex</span>
+                                    <div style="clear: both;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-3">
-            <div class="creditsTitle">
-                <span>Shiryu</span>
-            </div>
-            <div class="creditsBox">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4 noPadding">
-                            <img src="@Url.Content("~/img/Avatares/Shiryu.png")" class="imgCreditsBox" alt="" />
-                        </div>
-                        <div class="col-8">
-                            <p>Tester.</p>
-                            <div>
-                                <p style="float: left">NV:</p>
-                                <p style="float: right">1200</p>
-                                <div style="clear: both;"></div>
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                <div class="creditsTitle">
+                    <span>Shiryu</span>
+                </div>
+                <div class="creditsBox">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 noPadding">
+                                <img src="@Url.Content("~/img/Avatares/Shiryu.png")" class="imgCreditsBox" alt="" />
                             </div>
-                            <div>
-                                <p style="float: left">Twitter:</p>
-                                <p style="float: right">transcene</p>
-                                <div style="clear: both;"></div>
+                            <div class="col-8 centerDivText">
+                                <span class="font-weight-bold">Corrector</span>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">NV:</span>
+                                    <span style="float: right">5200</span>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div>
+                                    <span class="font-weight-bold" style="float: left">Twitter:</span>
+                                    <span style="float: right">@@Transcene</span>
+                                    <div style="clear: both;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-3">
+            @*<div class="col-xl-3 col-lg-4 col-sm-6 col-12">
             <div class="creditsTitle">
                 <span>Sorium</span>
             </div>
@@ -235,14 +238,14 @@
                             <img src="@Url.Content("~/img/Avatares/NakuFox.png")" class="imgCreditsBox" alt="" />
                         </div>
                         <div class="col-8">
-                            <p>Tester.</p>
+                            <p class="font-weight-bold">Tester</p>
                             <div>
-                                <p style="float: left">NV:</p>
+                                <p class="font-weight-bold" style="float: left">NV:</p>
                                 <p style="float: right">1200</p>
                                 <div style="clear: both;"></div>
                             </div>
                             <div>
-                                <p style="float: left">Twitter:</p>
+                                <p class="font-weight-bold" style="float: left">Twitter:</p>
                                 <p style="float: right">glowtranslations</p>
                                 <div style="clear: both;"></div>
                             </div>
@@ -250,13 +253,14 @@
                     </div>
                 </div>
             </div>
+        </div>*@
         </div>
-    </div>
-    <div class="row">
+
+    <div class="row" style="padding-top: 2vh;">
         <div class="col-12">
             <div class="navbar navbar-default navbar-fixed-bottom">
                 <div class="container">
-                    <div class="creditsBox">
+                    <div class="creditsBox creditsMargin">
                         <p class="text-center">Agradecimientos a Megaflan por ayudar con los formatos gráficos, a ProgSys y Kristan Thyme por sus Disgaea Tools utilizadas en la realización del proyecto y al resto de la comunidad de TraduSquare por su apoyo.</p>
                         <p class="text-center">Disgaea PC (2003-2016, Nippon Ichi Software)</p>
                         <p class="text-center">Disgaea PC al castellano (2019-2020, Hypertraducciones)</p>
@@ -267,8 +271,5 @@
     </div>
 </div>
 </div>
-<script>window.$ = window.jQuery = require('jquery');</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -7,7 +7,6 @@
     background-attachment: fixed;
     background-color: #fff;
     background-size: cover;
-    width: 100vw;
     height: 100vh;
 }
 
@@ -47,29 +46,20 @@
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
-.creditsBox {
-    background-color: #cfc0a9;
-    border-style: groove;
-    border-color: #8e6952;
-    overflow: hidden;
-    margin-bottom: 1vh;
-    font-size: 0.9vw;
-}
-
 .imgCreditsBox {
-    width: 8vw;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .noPadding {
-    padding-left: 0;
+    padding: 0;
 }
 
 .creditsTitle {
     background-color: #594231;
     color: #c9c4c0;
-    border-style: groove;
+    border: 0.3vh #8e6952 groove;
     font-size: 3vh;
-    border-color: #8e6952;
 }
 
 .creditsTitle > span {
@@ -119,4 +109,37 @@
 
 .modalPrinny {
     width: 5vw;
+}
+
+.centerDivText {
+    padding-top: 1vh;
+}
+
+.creditsMargin {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+@media screen and (max-width: 999px) {
+    .creditsBox {
+        background-color: #cfc0a9;
+        border: 1vh #8e6952 groove;
+        overflow: hidden;
+        margin-bottom: 1vh;
+        font-size: 1.2rem;
+        line-height: 4vh;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .creditsBox {
+        background-color: #cfc0a9;
+        border: 1vh #8e6952 groove;
+        overflow: hidden;
+        margin-bottom: 1vh;
+        font-size: 1vw;
+        line-height: 4vh;
+    }
 }
