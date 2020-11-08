@@ -1,3 +1,4 @@
+using System.Linq;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Builder;
@@ -46,13 +47,18 @@ namespace DisgaeaPatcher
         {
             var browserWindow = await ElectronNET.API.Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
-                Width = 1500,
-                Height = 800,
+                Width = 1260,
+                Height = 700,
                 Show = false,
-                //Icon = "Assets/text_editor.png" 
+                MinWidth = 1260,
+                MinHeight = 700,
             });
 
-            browserWindow.OnReadyToShow += () => browserWindow.Show();
+            browserWindow.OnReadyToShow += () =>
+            {
+                browserWindow.Show();
+                Electron.WindowManager.BrowserWindows.First().RemoveMenu();
+            };
             browserWindow.SetTitle("Parcheador Disgaea PC");
         }
     }

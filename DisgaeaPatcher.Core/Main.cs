@@ -18,11 +18,11 @@ namespace DisgaeaPatcher.Core
 
         // Core variables
         public bool Installed { get; set; }
-        private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
-                                 Path.DirectorySeparatorChar;
         //private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
-        //                         Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".."
-        //                         + Path.DirectorySeparatorChar;
+        //                         Path.DirectorySeparatorChar;
+        private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
+                                 Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".."
+                                 + Path.DirectorySeparatorChar;
         private string errMsg = "El juego está dañado, reinstala de nuevo el juego y el parcheador.";
         private string temp;
         public bool Internet { get; }

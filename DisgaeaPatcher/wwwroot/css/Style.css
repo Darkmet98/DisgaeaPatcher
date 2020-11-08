@@ -108,8 +108,14 @@
 }
 
 .modalPrinny {
-    width: 5vw;
+    width: 8rem;
+    margin-left: 1vw;
 }
+
+.modalPrinnySmoll {
+    width: 5rem;
+}
+
 
 .centerDivText {
     padding-top: 1vh;
@@ -120,6 +126,26 @@
     padding-right: 3vw;
     padding-top: 1vh;
     padding-bottom: 1vh;
+}
+
+/* OVERRIDE */
+.btn-primary {
+    color: #fff;
+    background-color: #594231;
+    border-color: #c9c4c0;
+}
+
+.imgTs {
+    height: 9vw;
+    position: absolute;
+    left: 30vw;
+    bottom: -7vh;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #261c15;
+    border-color: #c9c4c0;
 }
 
 @media screen and (max-width: 999px) {

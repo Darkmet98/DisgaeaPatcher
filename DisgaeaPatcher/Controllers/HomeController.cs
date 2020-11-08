@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using DisgaeaPatcher.Core;
 using ElectronNET.API;
+using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisgaeaPatcher.Controllers
@@ -18,13 +20,36 @@ namespace DisgaeaPatcher.Controllers
 
         public void OpenInfo()
         {
-            Electron.WindowManager.CreateWindowAsync(
-                $"http://localhost:{BridgeSettings.WebPort}/Credits");
+            ElectronBootstrap();
+           
+        }
+
+        private async void ElectronBootstrap()
+        {
+            var browserWindow = await ElectronNET.API.Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
+            {
+                Width = 1260,
+                Height = 700,
+                Show = false,
+                MinWidth = 1260,
+                MinHeight = 700,
+            });
+            browserWindow.LoadURL($"http://localhost:{BridgeSettings.WebPort}/Credits");
+            browserWindow.OnReadyToShow += () =>
+            {
+                browserWindow.Show();
+                Electron.WindowManager.BrowserWindows.Last().RemoveMenu();
+            };
         }
 
         public void OpenGame(string type)
         {
             Core.OpenGame(Convert.ToInt32(type));
+        }
+
+        public void OpenUrl(string url)
+        {
+            Electron.Shell.OpenExternalAsync(url);
         }
 
         public ActionResult CheckGame()
