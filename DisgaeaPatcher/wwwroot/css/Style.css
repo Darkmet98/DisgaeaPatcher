@@ -1,12 +1,12 @@
 ﻿body {
     background-color: black;
-}
-.bodyHtml {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: #fff;
     background-size: cover;
+}
+.bodyHtml {
+    
     height: 100vh;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .dialogBox {
-    background-color: #cfc0a9;
+    background-color: #cebfa8;
     color: #2a2212;
     width: 28vw;
     height: 40vh;
@@ -92,7 +92,7 @@
 }
 
 .modalBox {
-    background-color: #cfc0a9;
+    background-color: #cebfa8;
     overflow: hidden;
     border: 4px #8e6952 groove;
 }
@@ -135,6 +135,10 @@
     border-color: #c9c4c0;
 }
 
+.btn-secondary {
+    border-color: #c9c4c0;
+}
+
 .imgTs {
     height: 9vw;
     position: absolute;
@@ -148,9 +152,26 @@
     border-color: #c9c4c0;
 }
 
+.centerVerticallyDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.buttonExit {
+    right: 6vw;
+    position: absolute;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
 @media screen and (max-width: 999px) {
     .creditsBox {
-        background-color: #cfc0a9;
+        background-color: #cebfa8;
         border: 1vh #8e6952 groove;
         overflow: hidden;
         margin-bottom: 1vh;
@@ -161,7 +182,7 @@
 
 @media screen and (min-width: 1000px) {
     .creditsBox {
-        background-color: #cfc0a9;
+        background-color: #cebfa8;
         border: 1vh #8e6952 groove;
         overflow: hidden;
         margin-bottom: 1vh;

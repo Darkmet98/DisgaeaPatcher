@@ -18,23 +18,38 @@ namespace DisgaeaPatcher.Core
 
         // Core variables
         public bool Installed { get; set; }
+
+        // Debug
+
         //private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
         //                         Path.DirectorySeparatorChar;
+        
+        // Release
+        
         private string gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
                                  Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".."
                                  + Path.DirectorySeparatorChar;
+
+
         private string errMsg = "El juego está dañado, reinstala de nuevo el juego y el parcheador.";
         private string temp;
         public bool Internet { get; }
         public bool GamePirated;
         private string steamDllMd5 = "1147b3abee03804b62f11080588dc950";
-        private Version localVersion;
+        public Version LocalVersion { get; set; }
         public Version OnlineVersion { get; set; }
 
         public Main()
         {
             Internet = CheckInternet();
-            Installed = File.Exists(gameDir + "version.json");
+            Installed = File.Exists($"{gameDir}version.json");
+            if (Installed)
+            {
+                LocalVersion = JsonConvert.DeserializeObject<Version>(
+                    File.ReadAllText($"{gameDir}version.json"));
+                steamDllMd5 = LocalVersion.Md5[3];
+            }
+                
         }
 
         public void OpenGame(int language)
@@ -48,7 +63,7 @@ namespace DisgaeaPatcher.Core
                     Process.Start($"{gameDir}dis1_st_es.exe");
                     break;
                 default:
-                    Process.Start($"{gameDir}dis1_st_en.exe");
+                    Process.Start($"{gameDir}dis1_st_es.exe");
                     break;
             }
             
@@ -60,7 +75,7 @@ namespace DisgaeaPatcher.Core
             try
             {
                 if (!File.Exists($"{gameDir}SUBDATA.DAT") || !File.Exists($"{gameDir}DATA.DAT") || !File.Exists($"{gameDir}dis1_st_en.exe") || !File.Exists($"{gameDir}steam_api.dll"))
-                    return (false, $"{errMsg}\nERROR CODE: FILES_NOT_FOUND.\n{gameDir}");
+                    return (false, $"{errMsg}\nERROR CODE: FILES_NOT_FOUND.");
 
                 var dllMd5 = Md5.CalculateMd5($"{gameDir}steam_api.dll");
 
@@ -79,20 +94,20 @@ namespace DisgaeaPatcher.Core
                     return (false,
                         "No tienes una conexión a internet. Es necesario tener internet\npara instalar el parche.");
 
-                localVersion = GetVersionJson();
+                LocalVersion = GetVersionJson();
 
                 var dataMd5 = Md5.CalculateMd5($"{gameDir}DATA.DAT");
                 var subdataMd5 = Md5.CalculateMd5($"{gameDir}SUBDATA.DAT");
                 var elfMd5 = Md5.CalculateMd5($"{gameDir}dis1_st_en.exe");
 
 
-                if (localVersion.Md5[0] != elfMd5)
+                if (LocalVersion.Md5[0] != elfMd5)
                     return (false, $"{errMsg}\nERROR CODE: ELF_MD5_MISMATCH.");
 
-                if (localVersion.Md5[1] != dataMd5)
+                if (LocalVersion.Md5[1] != dataMd5)
                     return (false, $"{errMsg}\nERROR CODE: DATA_MD5_MISMATCH.");
 
-                if (localVersion.Md5[2] != subdataMd5)
+                if (LocalVersion.Md5[2] != subdataMd5)
                     return (false, $"{errMsg}\nERROR CODE: SUBDATA_MD5_MISMATCH.");
 
                 if (dllMd5 != steamDllMd5 || File.Exists($"{gameDir}SmartSteamEmu.dll"))
@@ -118,10 +133,8 @@ namespace DisgaeaPatcher.Core
                 return false;
 
             OnlineVersion = GetVersionJson();
-            localVersion = JsonConvert.DeserializeObject<Version>(
-                File.ReadAllText($"{gameDir}version.json"));
 
-            return OnlineVersion.Id != localVersion.Id;
+            return OnlineVersion.Id != LocalVersion.Id;
         }
 
         public (bool, string) PatchGame()

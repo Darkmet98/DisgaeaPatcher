@@ -23,8 +23,8 @@
 
     <meta charset="utf-8">
 </head>
-<body>
-    <div class="bodyHtml bodyHtmlMain">
+<body class="bodyHtmlMain">
+    <div class="bodyHtml">
         <div style="display: none">
             <audio id="audioSelection" volume="0.3">
                 <source src="@Url.Content("~/audio/selection.mp3")" type="audio/mpeg" />
@@ -42,7 +42,7 @@
                     <img alt="" src="@Url.Content("~/img/Logo.png")" class="logo" />
                 </div>
                 <div class="col-6" style="text-align: right">
-                    <img alt="" src="@Url.Content("~/img/LogoTeam.png")" style="height: 15vh; width: 23vw;" onclick="openUrl('https://hypertraducciones.blogspot.com/')" />
+                    <img alt="" class="hand" src="@Url.Content("~/img/LogoTeam.png")" style="height: 15vh; width: 23vw;" onclick="openUrl('https://hypertraducciones.blogspot.com/')" />
                 </div>
             </div>
             <div class="row">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="col-3" style="text-align: right">
-                    <img alt="" src="@Url.Content("~/img/logoTs.webp")" class="imgTs" onclick="openUrl('https://tradusquare.es/')" />
+                    <img alt="" src="@Url.Content("~/img/logoTs.webp")" class="imgTs hand" onclick="openUrl('https://tradusquare.es/')" />
                 </div>
             </div>
         </div>
@@ -101,7 +101,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-3">
-                                <img alt="" class="modalPrinnySmoll text-center align-middle" src="@Url.Content("~/img/prinny02.gif")" />
+                                <img alt="" class="modalPrinnySmoll text-center align-middle" id="iconInfo" src="@Url.Content("~/img/prinny02.gif")" />
                             </div>
                             <div class="col-9" style="padding-top: 3vh;">
                                 <span id="infoText"></span>
@@ -210,7 +210,7 @@
             setTimeout(() => {
                 check(evt);
             }, 1000);
-            
+
         });
         $("#install").click(function() {
             $("#progressTitle").text("Comprobando archivos...");
@@ -233,6 +233,7 @@
         $.ajax({ url: "@Html.Raw(@Url.Action("CheckGame", "Home"))" }).done(function(data) {
 
             if (!data.check) {
+                setErrorIcon();
                 $("#progressWindow").modal('hide');
                 $("#infoTitle").text("Error verificando archivos.");
                 $("#infoText").text(data.msg);
@@ -310,6 +311,7 @@
         $.ajax({ url: "@Html.Raw(@Url.Action("PatchGame", "Home"))" }).done(function(data) {
 
             if (!data.check) {
+                setErrorIcon();
                 $("#progressWindow").modal('hide');
                 $("#infoTitle").text("Error aplicando el parche.");
                 $("#infoText").text(data.msg);
@@ -341,6 +343,7 @@
         $.ajax({ url: "@Html.Raw(@Url.Action("CheckGame", "Home"))" }).done(function(data) {
 
             if (!data.check) {
+                setErrorIcon();
                 $("#progressWindow").modal('hide');
                 $("#infoTitle").text("Error verificando archivos.");
                 $("#infoText").text(data.msg);
@@ -348,14 +351,15 @@
                 $("#infoWindow").modal('show');
                 return;
             }
-            $("#progressTitle").text("Aplicando parche.");
-            $("#progressText").text("Se está aplicando el parche...");
+            $("#progressTitle").text("Instalando parche...");
+            $("#progressText").text("Se está instalando el parche...");
 
             $.ajax({ url: "@Html.Raw(@Url.Action("PatchGame", "Home"))" }).done(function(data) {
 
                 if (!data.check) {
+                    setErrorIcon();
                     $("#progressWindow").modal('hide');
-                    $("#infoTitle").text("Error aplicando el parche.");
+                    $("#infoTitle").text("Error instalando el parche.");
                     $("#infoText").text(data.msg);
                     $("#infoWindow").modal('show');
                     return;
@@ -384,6 +388,10 @@
         let url = "@Html.Raw(@Url.Action("OpenUrl", "Home", new {url = "change"}))";
         url = url.replace("change", urlSend);
         $.ajax({ url: url });
+    }
+
+    function setErrorIcon() {
+        $("#iconInfo").attr("src", '@Url.Content("~/img/prinny05.gif")');
     }
 </script>
 </body>

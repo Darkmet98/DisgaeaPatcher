@@ -1,0 +1,79 @@
+﻿_________________________________________________________________
+
+Disgaea PC al castellano - Ver. 1.00
+
+Proyecto de traducción fundado, dirigido y supervisado por Óscar73.
+
+Equipo tras la traducción:
+
+- Óscar73: Traductor y tester.
+- Darkmet98: Romhacker.
+- Pleonex: Romhacker
+- NakuFox: Editor gráfico.
+- Shiryu: Corrector
+- Toridenki: Correctora y tester.
+- Roli300: Corrector y tester.
+
+Agradecimientos a Megaflan por ayudar con los formatos gráficos, a ProgSys y Krisan
+Thyme por sus "Disgaea Tools" utilizadas en la realización de este proyecto y al
+resto de la comunidad de TraduSquare por su apoyo.
+
+2019-2020 Hypertraducciones, TraduSquare
+_________________________________________________________________
+ 
+ 1. Introducción
+_____________________________
+
+Este parche traduce prácticamente en su totalidad Disgaea PC al castellano y ha sido
+desarrollado por Hypertraducciones con la ayuda de la comunidad de TraduSquare.
+
+- Nuestra página: https://hypertraducciones.blogspot.com/
+
+- Página de TraduSquare: https://tradusquare.es/
+_________________________________________________________________
+
+ 2. Descargo de responsabilidad
+_____________________________
+
+- Este parche ha sido desarrollado por fans, para fans. Por consiguiente, ninguno de los
+  miembros involucrados en este proyecto percibirá ganancia alguna de con este
+  parche. Tampoco aceptará donaciones por parte de los usuarios. Si has pagado para
+  obtener este parche, te han estafado.
+
+- Recomendamos encarecidamente que descargues este parche desde nuestra página.
+  Si lo has hecho desde otro sitio, no nos hacemos responsables de los problemas
+  o daños causados a tu PC.
+
+- No apoyamos la piratería, por lo que si cuentas con una copia ilegítima de
+  Disgaea PC, no podremos darte soporte.
+
+- Puedes subir vídeos a YouTube o retransmitir en Twitch gameplays (o una serie) sobre
+  Disgaea PC con nuestro parche (y te lo agradeceremos si nos citas), pero tomaremos
+  acciones con aquellos vídeos que involucren nuestro parche con actos ilícitos.
+_________________________________________________________________
+ 
+ 3. Instalación y uso del parcheador
+_____________________________
+
+Una vez instalado el parcheador, se abrirá nuestro launcher cada vez que ejecutes el
+juego. La primera vez, aparecerá la opción "Instalar", que aplicará el parche sobre
+el juego. Tras la instalación, esta opción cambiará a "Jugar", y cada vez que la
+selecciones, el parcheador comprobará si existe alguna actualización del mismo.
+
+Por lo general, las actualizaciones del parche se instalarán así y no hará falta volver
+a descargar el parche de nuestra página. En caso de que no sea así, avisaremos en
+nuestra página o redes sociales.
+_________________________________________________________________
+
+ 4. Información de contacto
+_____________________________
+
+Si experimentas algún problema con esta versión o encuentras algún error, puedes
+contactar con nosotros mediante:
+
+- Nuestro formulario de contacto: https://hypertraducciones.blogspot.com/p/contacto.html
+
+- Nuestro correo: hypertraducciones@gmail.com
+
+- Nuestro Twitter: @Hypertradus / https://twitter.com/Hypertradus
+_________________________________________________________________

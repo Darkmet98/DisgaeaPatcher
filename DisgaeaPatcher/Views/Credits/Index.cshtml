@@ -19,25 +19,29 @@
 
     <meta charset="utf-8">
 </head>
-<body>
-<div class="bodyHtml bodyHtmlCredits">
+<body class="bodyHtmlCredits">
+<div class="bodyHtml">
 <div class="container-fluid">
-<div class="row" style="padding-top: 2vh;">
-    <div class="col-3">
-        <img alt="" class="imgCreditsBox" src="@Url.Content("~/img/prinny.gif")" onclick="openUrl('https://www.youtube.com/watch?v=q8DQ5702gYI')" />
-    </div>
-    <div class="col-5">
-        <div class="creditsBox" style="width: 50vw;height: 20vh;">
-            <h1 class="text-center" style="font-size: 2.1vw;padding-top: 3.5vh;">Disgaea PC al castellano - v1.0.0</h1>
-            <h3 class="text-center" style="font-size: 1.5vw;">Un proyecto de Hypertraducciones.</h3>
+    <div class="row" style="padding-top: 2vh;">
+        <div class="col-2">
+            <img alt="" class="imgCreditsBox hand" src="@Url.Content("~/img/prinny.gif")" style="max-width: 75%;" onclick="openUrl('https://www.youtube.com/watch?v=q8DQ5702gYI')" />
+        </div>
+        <div class="col-1 centerVerticallyDiv">
+            <button type="button" class="btn btn-primary buttonExit" onclick="window.close();">Cerrar</button>
+        </div>
+        <div class="col-7">
+            <div class="creditsBox" style="width: 50vw;height: 20vh;">
+                <h1 class="text-center" style="font-size: 2.1vw;padding-top: 2vh;">Disgaea PC al castellano - @Model.Version</h1>
+                <h3 class="text-center" style="font-size: 1.5vw;">Proyecto de traducción fundado, dirigido y supervisado por Óscar73.</h3>
+                <h3 class="text-center" style="font-size: 1.5vw;">Un proyecto de Hypertraducciones.</h3>
+            </div>
+        </div>
+        <div class="col-2" style="text-align: right;">
+            <img alt="" class="imgCreditsBox hand" src="@Url.Content("~/img/prinny.gif")" style="max-width: 75%;" onclick="openUrl('https://es.wikihow.com/comportarse-como-princesa')" />
         </div>
     </div>
-    <div class="col-4" style="text-align: right;">
-        <img alt="" class="imgCreditsBox" src="@Url.Content("~/img/prinny.gif")" onclick="openUrl('https://es.wikihow.com/comportarse-como-princesa')" />
-    </div>
-</div>
 <div class="row" style="padding-top: 3vh;">
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/0scar73')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/0scar73')">
     <div class="creditsTitle">
         <span>Óscar73</span>
     </div>
@@ -64,7 +68,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/Darkmet98')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/Darkmet98')">
     <div class="creditsTitle">
         <span>Darkmet98</span>
     </div>
@@ -91,7 +95,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/NakuFox')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/NakuFox')">
     <div class="creditsTitle">
         <span>NakuFox</span>
     </div>
@@ -119,7 +123,7 @@
     </div>
 </div>
 
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/Toridenki')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/Toridenki')">
     <div class="creditsTitle">
         <span>Toridenki</span>
     </div>
@@ -130,7 +134,7 @@
                     <img src="@Url.Content("~/img/Avatares/Toridenki.png")" class="imgCreditsBox" alt="" />
                 </div>
                 <div class="col-8 centerDivText">
-                    <span class="font-weight-bold">Tester</span>
+                    <span class="font-weight-bold">Correctora y tester</span>
                     <div>
                         <span class="font-weight-bold" style="float: left">NV.</span>
                         <span style="float: right">3000</span>
@@ -146,7 +150,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/roli300')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/roli300')">
     <div class="creditsTitle">
         <span>Roli300</span>
     </div>
@@ -157,7 +161,7 @@
                     <img src="@Url.Content("~/img/Avatares/Roli300.png")" class="imgCreditsBox" alt="" />
                 </div>
                 <div class="col-8 centerDivText">
-                    <span class="font-weight-bold">Tester</span>
+                    <span class="font-weight-bold">Corrector y tester</span>
                     <div>
                         <span class="font-weight-bold" style="float: left">NV.</span>
                         <span style="float: right">4000</span>
@@ -173,7 +177,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/pleonex')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/pleonex')">
     <div class="creditsTitle">
         <span>Pleonex</span>
     </div>
@@ -200,7 +204,7 @@
         </div>
     </div>
 </div>
-<div class="col-xl-3 col-lg-4 col-sm-6 col-12" onclick="openUrl('https://twitter.com/joguersan')">
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/joguersan')">
     <div class="creditsTitle">
         <span>Shiryu</span>
     </div>
@@ -227,46 +231,48 @@
         </div>
     </div>
 </div>
-@*<div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-            <div class="creditsTitle">
-                <span>Sorium</span>
-            </div>
-            <div class="creditsBox">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-4 noPadding">
-                            <img src="@Url.Content("~/img/Avatares/NakuFox.png")" class="imgCreditsBox" alt="" />
-                        </div>
-                        <div class="col-8">
-                            <p class="font-weight-bold">Tester</p>
-                            <div>
-                                <p class="font-weight-bold" style="float: left">NV:</p>
-                                <p style="float: right">1200</p>
-                                <div style="clear: both;"></div>
-                            </div>
-                            <div>
-                                <p class="font-weight-bold" style="float: left">Twitter:</p>
-                                <p style="float: right">glowtranslations</p>
-                                <div style="clear: both;"></div>
-                            </div>
-                        </div>
+<div class="col-xl-3 col-lg-4 col-sm-6 col-12 hand" onclick="openUrl('https://twitter.com/Sorium_Aestas')">
+    <div class="creditsTitle">
+        <span>Sorium</span>
+    </div>
+    <div class="creditsBox">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 noPadding">
+                    <img src="@Url.Content("~/img/Avatares/Sorium.png")" class="imgCreditsBox" alt="" />
+                </div>
+                <div class="col-8 centerDivText">
+                    <span class="font-weight-bold">Tester</span>
+                    <div>
+                        <span class="font-weight-bold" style="float: left">NV.</span>
+                        <span style="float: right">1400</span>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div>
+                        <span class="font-weight-bold" style="float: left">Twitter:</span>
+                        <span style="float: right">@@Sorium_Aestas</span>
+                        <div style="clear: both;"></div>
                     </div>
                 </div>
             </div>
-        </div>*@
+        </div>
+    </div>
+</div>
 </div>
 
 <div class="row" style="padding-top: 2vh;">
-    <div class="col-12">
-        <div class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container">
-                <div class="creditsBox creditsMargin">
-                    <p class="text-center">Agradecimientos a Megaflan por ayudar con los formatos gráficos, a ProgSys y Kristan Thyme por sus Disgaea Tools utilizadas en la realización del proyecto y al resto de la comunidad de TraduSquare por su apoyo.</p>
-                    <p class="text-center">Disgaea PC (2003-2016, Nippon Ichi Software)</p>
-                    <p class="text-center">Disgaea PC al castellano (2019-2020, Hypertraducciones)</p>
-                </div>
-            </div>
+    <div class="col-2 centerVerticallyDiv">
+        <img alt="" class="imgCreditsBox hand" src="@Url.Content("~/img/LogoTeam.png")" onclick="openUrl('https://hypertraducciones.blogspot.com/')" />
+    </div>
+    <div class="col-8">
+        <div class="creditsBox creditsMargin" style="font-size: 1.2rem;">
+            <p class="text-center">Agradecimientos a Megaflan por ayudar con los formatos gráficos, a ProgSys y Kristan Thyme por sus Disgaea Tools utilizadas en la realización del proyecto y al resto de la comunidad de TraduSquare por su apoyo.</p>
+            <p class="text-center">Disgaea PC (2003-2016, Nippon Ichi Software)</p>
+            <p class="text-center">Disgaea PC al castellano (2019-2020, Hypertraducciones)</p>
         </div>
+    </div>
+    <div class="col-2 centerVerticallyDiv" style="padding-bottom: 2vh;">
+        <img alt="" class="imgCreditsBox hand" src="@Url.Content("~/img/logoTs.webp")" onclick="openUrl('https://tradusquare.es/')" />
     </div>
 </div>
 </div>

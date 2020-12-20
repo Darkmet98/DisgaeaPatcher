@@ -4,13 +4,14 @@
     "imageFile": ""
   },
   "name": "DisgaeaPatcher",
-  "author": "",
-  "singleInstance": false,
+  "author": "HyperTraducciones",
+  "singleInstance": true,
   "environment": "Production",
   "build": {
     "appId": "com.DisgaeaPatcher.app",
     "productName": "DisgaeaPatcher",
-    "copyright": "Copyright © 2020",
+    "copyright": "Copyright HyperTraducciones © 2020",
+	"icon": "../../../icon.ico",
     "buildVersion": "1.0.0",
     "compression": "maximum",
     "directories": {

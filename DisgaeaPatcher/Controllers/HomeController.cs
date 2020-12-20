@@ -21,7 +21,6 @@ namespace DisgaeaPatcher.Controllers
         public void OpenInfo()
         {
             ElectronBootstrap();
-           
         }
 
         private async void ElectronBootstrap()

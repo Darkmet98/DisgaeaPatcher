@@ -57,7 +57,7 @@ namespace DisgaeaPatcher
             browserWindow.OnReadyToShow += () =>
             {
                 browserWindow.Show();
-                Electron.WindowManager.BrowserWindows.First().RemoveMenu();
+                //Electron.WindowManager.BrowserWindows.First().RemoveMenu();
             };
             browserWindow.SetTitle("Parcheador Disgaea PC");
         }
