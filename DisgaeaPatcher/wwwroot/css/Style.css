@@ -128,14 +128,14 @@
     padding-bottom: 1vh;
 }
 
+.link-bold > a {
+    color: initial;
+    font-weight: bold;
+}
 /* OVERRIDE */
 .btn-primary {
     color: #fff;
     background-color: #594231;
-    border-color: #c9c4c0;
-}
-
-.btn-secondary {
     border-color: #c9c4c0;
 }
 

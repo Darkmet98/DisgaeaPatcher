@@ -10,9 +10,10 @@ Equipo tras la traducción:
 - Darkmet98: Romhacker.
 - Pleonex: Romhacker
 - NakuFox: Editor gráfico.
-- Shiryu: Corrector
+- Shiryu: Corrector.
 - Toridenki: Correctora y tester.
 - Roli300: Corrector y tester.
+- Sorium: Tester.
 
 Agradecimientos a Megaflan por ayudar con los formatos gráficos, a ProgSys y Krisan
 Thyme por sus "Disgaea Tools" utilizadas en la realización de este proyecto y al

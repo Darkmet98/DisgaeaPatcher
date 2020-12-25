@@ -13,8 +13,8 @@ namespace DisgaeaPatcher.Core
     public class Main
     {
         // URLs for download the patch and version.json
-        private string versionCheckUrl = "https://tradusquare.es/disgaea/version.json";
-        private string fileDownloadUrl = "https://tradusquare.es/disgaea/DisgaeaPatchTest.zip";
+        private string versionCheckUrl = "https://raw.githubusercontent.com/Hypertraducciones/Disgaea-PC/main/version.json";
+        private string fileDownloadUrl = "https://github.com/Hypertraducciones/Disgaea-PC/archive/main.zip";
 
         // Core variables
         public bool Installed { get; set; }
@@ -144,7 +144,7 @@ namespace DisgaeaPatcher.Core
                 FileManipulation.Internet.GetFile(fileDownloadUrl, "DisgaeaPatch.zip", temp);
                 Directory.CreateDirectory($"{temp}{Path.DirectorySeparatorChar}Update");
                 ZipFile.ExtractToDirectory($"{temp}{Path.DirectorySeparatorChar}DisgaeaPatch.zip", $"{temp}{Path.DirectorySeparatorChar}Update");
-                var result = PatchDisgaeaFiles.Patch(gameDir, $"{temp}{Path.DirectorySeparatorChar}Update");
+                var result = PatchDisgaeaFiles.Patch(gameDir, $"{temp}{Path.DirectorySeparatorChar}Update{Path.DirectorySeparatorChar}Disgaea-PC-main");
                 
                 Installed = result.Item1;
                 
